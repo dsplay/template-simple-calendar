@@ -13,4 +13,7 @@ var dsplay_media = {
 };
 
 var dsplay_template = {
+  logo:'../test-assets/dsplay-logo.png',
+  primaryColor:'#020203',
+  secondaryColor:'#032B43',
 };
