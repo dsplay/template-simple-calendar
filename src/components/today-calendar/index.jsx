@@ -9,12 +9,13 @@ import { ThemeContext } from '../../contexts/themeContext';
 function TodayCalendar({ clock, dateFromNow }) {
   const heightValue = window.innerHeight;
   const { globalTheme } = useContext(ThemeContext);
+  const primaryColor = globalTheme.primaryColor ? globalTheme.primaryColor : '#3F88C5';
   const logo = useTemplateVal('logo');
   return (
     <>
       {
         heightValue > 100 ? (
-          <div className="today-calendar-container" style={{ backgroundColor: globalTheme.primaryColor }}>
+          <div className="today-calendar-container" style={{ backgroundColor: primaryColor }}>
             <h1>{format(dateFromNow, 'EEEE', { locale: i18n.t('locale', { returnObjects: true }) })}</h1>
             <span>{format(dateFromNow, 'dd', { locale: i18n.t('locale', { returnObjects: true }) })}</span>
             <p>
@@ -25,7 +26,7 @@ function TodayCalendar({ clock, dateFromNow }) {
             </div>
           </div>
         ) : (
-          <div className="today-calendar-container" style={{ backgroundColor: globalTheme.primaryColor }}>
+          <div className="today-calendar-container" style={{ backgroundColor: primaryColor }}>
             <div>
               {`${clock}`}
             </div>

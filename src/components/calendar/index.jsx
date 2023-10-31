@@ -27,7 +27,7 @@ function Calendar() {
   const [activeDate, setActiveDate] = useState(now);
   const heightValue = window.innerHeight;
   const { globalTheme } = useContext(ThemeContext);
-
+  const secondaryColor = globalTheme.secondaryColor ? globalTheme.secondaryColor : '#3F88C5';
   const getHeader = () => (
     <div className="header-calendar">
       <CaretLeft
@@ -131,7 +131,7 @@ function Calendar() {
     <>
       {
         heightValue > 100 ? (
-          <div className="calendarContainer" style={{ backgroundColor: globalTheme.secondaryColor }}>
+          <div className="calendarContainer" style={{ backgroundColor: secondaryColor }}>
             <div className="content">
               {getHeader()}
               {getWeekDaysNames()}
