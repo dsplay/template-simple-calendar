@@ -15,7 +15,7 @@ function TodayCalendar({ clock, dateFromNow }) {
     <>
       {
         heightValue > 100 ? (
-          <div className="today-calendar-container" style={{ backgroundColor: primaryColor }}>
+          <div className="today-calendar-container" style={{ backgroundColor: primaryColor, color: globalTheme.primaryFontColor }}>
             <h1>{format(dateFromNow, 'EEEE', { locale: i18n.t('locale', { returnObjects: true }) })}</h1>
             <span>{format(dateFromNow, 'dd', { locale: i18n.t('locale', { returnObjects: true }) })}</span>
             <p>
@@ -26,7 +26,7 @@ function TodayCalendar({ clock, dateFromNow }) {
             </div>
           </div>
         ) : (
-          <div className="today-calendar-container" style={{ backgroundColor: primaryColor }}>
+          <div className="today-calendar-container" style={{ backgroundColor: primaryColor, color: globalTheme.primaryFontColor }}>
             <div>
               {`${clock}`}
             </div>

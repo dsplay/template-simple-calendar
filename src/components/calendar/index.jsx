@@ -131,7 +131,7 @@ function Calendar() {
     <>
       {
         heightValue > 100 ? (
-          <div className="calendarContainer" style={{ backgroundColor: secondaryColor }}>
+          <div className="calendarContainer" style={{ backgroundColor: secondaryColor, color: globalTheme.secondaryFontColor }}>
             <div className="content">
               {getHeader()}
               {getWeekDaysNames()}
@@ -140,7 +140,7 @@ function Calendar() {
           </div>
         )
           : (
-            <div className="calendarContainer">
+            <div className="calendarContainer" style={{ backgroundColor: secondaryColor, color: globalTheme.secondaryFontColor }}>
               <div className="content">
                 {getWeekDaysNames()}
                 {

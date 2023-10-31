@@ -15,5 +15,7 @@ var dsplay_media = {
 var dsplay_template = {
   logo:'../test-assets/dsplay-logo.png',
   primaryColor:'',
-  secondaryColor:'#032B43',
+  primaryFontColor:'#032B43',
+  secondaryColor:'',
+  secondaryFontColor:'#032B43',
 };

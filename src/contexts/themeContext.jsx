@@ -6,12 +6,16 @@ export const ThemeContext = createContext({
   globalTheme: {
     primaryColor: '',
     secondaryColor: '',
+    primaryFontColor: '',
+    secondaryFontColor: '',
   },
 });
 
 const ThemeContextParent = (props) => {
   const primary = useTemplateVal('primaryColor');
   const secondary = useTemplateVal('secondaryColor');
+  const secondaryFont = useTemplateVal('secondaryFontColor');
+  const primaryFont = useTemplateVal('primaryFontColor');
 
   const { children } = props;
 
@@ -19,6 +23,8 @@ const ThemeContextParent = (props) => {
     globalTheme: {
       primaryColor: primary,
       secondaryColor: secondary,
+      primaryFontColor: primaryFont,
+      secondaryFontColor: secondaryFont,
     },
   };
 
