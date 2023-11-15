@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { CaretLeft, CaretRight } from 'phosphor-react';
 import {
   addDays,
@@ -18,6 +18,7 @@ import {
 } from 'date-fns';
 import './styles.sass';
 import { i18n } from '../../i18n';
+import { ThemeContext } from '../../contexts/themeContext';
 
 const now = new Date();
 
@@ -25,7 +26,8 @@ function Calendar() {
   const [selectedDate, setSelectedDate] = useState(now);
   const [activeDate, setActiveDate] = useState(now);
   const heightValue = window.innerHeight;
-
+  const { globalTheme } = useContext(ThemeContext);
+  const secondaryColor = globalTheme.secondaryColor ? globalTheme.secondaryColor : '#3F88C5';
   const getHeader = () => (
     <div className="header-calendar">
       <CaretLeft
@@ -129,7 +131,7 @@ function Calendar() {
     <>
       {
         heightValue > 100 ? (
-          <div className="calendarContainer">
+          <div className="calendarContainer" style={{ backgroundColor: secondaryColor, color: globalTheme.secondaryFontColor }}>
             <div className="content">
               {getHeader()}
               {getWeekDaysNames()}
@@ -138,7 +140,7 @@ function Calendar() {
           </div>
         )
           : (
-            <div className="calendarContainer">
+            <div className="calendarContainer" style={{ backgroundColor: secondaryColor, color: globalTheme.secondaryFontColor }}>
               <div className="content">
                 {getWeekDaysNames()}
                 {

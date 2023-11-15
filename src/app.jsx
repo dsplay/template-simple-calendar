@@ -4,6 +4,7 @@ import Main from './components/main';
 import LoaderCalendar from './components/loader-calendar';
 import './app.sass';
 import './fonts.sass';
+import ThemeContextParent from './contexts/themeContext';
 
 const MIN_LOADING_DURATION = 2000;
 
@@ -19,7 +20,9 @@ function App() {
         minDuration={MIN_LOADING_DURATION}
         fonts={fonts}
       >
-        <Main />
+        <ThemeContextParent>
+          <Main />
+        </ThemeContextParent>
       </Loader>
     </div>
   );
