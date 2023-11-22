@@ -27,7 +27,7 @@ function Calendar() {
   const [activeDate, setActiveDate] = useState(now);
   const heightValue = window.innerHeight;
   const { globalTheme } = useContext(ThemeContext);
-  const secondaryColor = globalTheme.secondaryColor ? globalTheme.secondaryColor : '#3F88C5';
+  const secondaryColor = globalTheme.secondaryColor ? globalTheme.secondaryColor : '#032B43';
   const getHeader = () => (
     <div className="header-calendar">
       <CaretLeft
