@@ -28,37 +28,20 @@ function Calendar() {
   const heightValue = window.innerHeight;
   const { globalTheme } = useContext(ThemeContext);
   const secondaryColor = globalTheme.secondaryColor ? globalTheme.secondaryColor : '#032B43';
+  const { secondaryFontColor } = globalTheme;
+  const fullDateFontColor = globalTheme.fullDateFontColor || secondaryFontColor || '#ffff';
+  const activeDays = globalTheme.activeDaysFontColor || secondaryFontColor || '#ffff';
+  const inactiveDaysFontColor = globalTheme.inactiveDaysFontColor || secondaryFontColor || '#9e9e9e';
+  const weekDaysFontColor = globalTheme.weekDaysFontColor || secondaryFontColor || '#cccbcb';
+  const todayBgColor = globalTheme.todayBgColor || secondaryFontColor || '#3366ff';
   const getHeader = () => (
     <div className="header-calendar">
-      <CaretLeft
-        size={45}
-        weight="bold"
-        onClick={() => setActiveDate(subMonths(activeDate, 1))}
-      />
-
       <div>
-        <h2 className="currentMonth">
+        <h2 style={{ color: fullDateFontColor }} className="currentMonth">
           {format(activeDate,
             'PPP', { locale: i18n.t('locale', { returnObjects: true }) })}
-
         </h2>
-
-        <div
-          className="today-btn"
-          onClick={() => {
-            setSelectedDate(now);
-            setActiveDate(now);
-          }}
-        >
-          {i18n.t('message.today')}
-        </div>
       </div>
-
-      <CaretRight
-        size={45}
-        weight="bold"
-        onClick={() => setActiveDate(addMonths(activeDate, 1))}
-      />
     </div>
   );
   const getWeekDaysNames = () => {
@@ -68,7 +51,7 @@ function Calendar() {
     // eslint-disable-next-line no-plusplus
     for (let day = 0; day < 7; day++) {
       weekdays.push(
-        <div className="day weekNames" key={day + weekStartDate}>
+        <div style={{ color: weekDaysFontColor }} className="day weekNames" key={day + weekStartDate}>
           {format(addDays(weekStartDate, day), 'EE', { locale: i18n.t('locale', { returnObjects: true }) })}
         </div>,
       );
@@ -84,9 +67,11 @@ function Calendar() {
     // eslint-disable-next-line no-plusplus
     for (let day = 0; day < 7; day++) {
       const cloneDate = currentDate;
-
+      const weekFonts = isSameMonth(currentDate, activeDate) ? activeDays : inactiveDaysFontColor;
+      const background = isSameDay(currentDate, now) ? todayBgColor : '';
       week.push(
         <div
+          style={{ color: weekFonts, backgroundColor: background }}
           className={`day
           ${isSameMonth(currentDate, activeDate) ? '' : 'inactiveDay'}
           ${isSameDay(currentDate, selectedDate) ? 'selectedDay' : ''}
@@ -131,7 +116,7 @@ function Calendar() {
     <>
       {
         heightValue > 100 ? (
-          <div className="calendarContainer" style={{ backgroundColor: secondaryColor, color: globalTheme.secondaryFontColor }}>
+          <div className="calendarContainer" style={{ backgroundColor: secondaryColor }}>
             <div className="content">
               {getHeader()}
               {getWeekDaysNames()}
