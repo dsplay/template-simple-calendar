@@ -33,7 +33,7 @@ function Calendar() {
   const activeDays = globalTheme.activeDaysFontColor || secondaryFontColor || '#ffff';
   const inactiveDaysFontColor = globalTheme.inactiveDaysFontColor || secondaryFontColor || '#9e9e9e';
   const weekDaysFontColor = globalTheme.weekDaysFontColor || secondaryFontColor || '#cccbcb';
-  const todayBgColor = globalTheme.todayBgColor || secondaryFontColor || '#3366ff';
+  const todayBgColor = globalTheme.todayBgColor || globalTheme.primaryColor || '#3366ff';
   const getHeader = () => (
     <div className="header-calendar">
       <div>

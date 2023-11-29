@@ -22,7 +22,7 @@ function TodayCalendar({ clock, dateFromNow }) {
       {
         heightValue > 100 ? (
           <div className="today-calendar-container" style={{ backgroundColor: primaryColor }}>
-            <h1 style={{ color: dayFontColor }}>{format(dateFromNow, 'EEEE', { locale: i18n.t('locale', { returnObjects: true }) })}</h1>
+            <h1 style={{ color: weekDayFontColor }}>{format(dateFromNow, 'EEEE', { locale: i18n.t('locale', { returnObjects: true }) })}</h1>
             <span style={{ color: dayFontColor }}>{format(dateFromNow, 'dd', { locale: i18n.t('locale', { returnObjects: true }) })}</span>
             <p style={{ color: timeFontColor }}>
               {`${clock}`}

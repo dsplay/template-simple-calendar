@@ -1,5 +1,5 @@
 import React from 'react';
-import { Loader } from '@dsplay/react-template-utils';
+import { Loader, useScreenInfo } from '@dsplay/react-template-utils';
 import Main from './components/main';
 import LoaderCalendar from './components/loader-calendar';
 import './app.sass';
@@ -13,17 +13,19 @@ const fonts = [
 ];
 
 function App() {
+  const { screenFormat } = useScreenInfo();
+
   return (
-    <div className="container-home">
-      <Loader
-        placeholder={<LoaderCalendar />}
-        minDuration={MIN_LOADING_DURATION}
-        fonts={fonts}
-      >
-        <ThemeContextParent>
+    <div className={`container-home ${screenFormat}`}>
+      <ThemeContextParent>
+        <Loader
+          placeholder={<LoaderCalendar />}
+          minDuration={MIN_LOADING_DURATION}
+          fonts={fonts}
+        >
           <Main />
-        </ThemeContextParent>
-      </Loader>
+        </Loader>
+      </ThemeContextParent>
     </div>
   );
 }
