@@ -18,4 +18,13 @@ var dsplay_template = {
   primaryFontColor:'',
   secondaryColor:'',
   secondaryFontColor:'',
-};
+  weekDayFontColor: '', 
+  dayFontColor: '', 
+  timeFontColor: '',
+  logoBgColor: '', 
+  fullDateFontColor: '', 
+  activeDaysFontColor: '', 
+  inactiveDaysFontColor: '', 
+  weekDaysFontColor: '', 
+  todayBgColor: '', 
+}

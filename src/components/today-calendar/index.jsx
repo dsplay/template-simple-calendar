@@ -9,31 +9,36 @@ import { ThemeContext } from '../../contexts/themeContext';
 function TodayCalendar({ clock, dateFromNow }) {
   const heightValue = window.innerHeight;
   const { globalTheme } = useContext(ThemeContext);
-  const primaryColor = globalTheme.primaryColor ? globalTheme.primaryColor : '#3F88C5';
-
   const logo = useTemplateVal('logo');
+  const primaryColor = globalTheme.primaryColor ? globalTheme.primaryColor : '#3F88C5';
+  const { primaryFontColor } = globalTheme;
+  const weekDayFontColor = globalTheme.weekDayFontColor || primaryFontColor || '#ffff';
+  const dayFontColor = globalTheme.dayFontColor || primaryFontColor || '#ffff';
+  const timeFontColor = globalTheme.timeFontColor || primaryFontColor || '#ffff';
+  const logoBgColor = globalTheme.logoBgColor || 'transparent';
+
   return (
     <>
       {
         heightValue > 100 ? (
-          <div className="today-calendar-container" style={{ backgroundColor: primaryColor, color: globalTheme.primaryFontColor }}>
-            <h1>{format(dateFromNow, 'EEEE', { locale: i18n.t('locale', { returnObjects: true }) })}</h1>
-            <span>{format(dateFromNow, 'dd', { locale: i18n.t('locale', { returnObjects: true }) })}</span>
-            <p>
+          <div className="today-calendar-container" style={{ backgroundColor: primaryColor }}>
+            <h1 style={{ color: dayFontColor }}>{format(dateFromNow, 'EEEE', { locale: i18n.t('locale', { returnObjects: true }) })}</h1>
+            <span style={{ color: dayFontColor }}>{format(dateFromNow, 'dd', { locale: i18n.t('locale', { returnObjects: true }) })}</span>
+            <p style={{ color: timeFontColor }}>
               {`${clock}`}
             </p>
             {logo && (
-              <div>
+              <div style={{ backgroundColor: logoBgColor, borderRadius: 10 }} className="logoArea">
                 <img alt="company" src={logo} />
               </div>
             )}
           </div>
         ) : (
           <div className="today-calendar-container" style={{ backgroundColor: primaryColor, color: globalTheme.primaryFontColor }}>
-            <div>
+            <div style={{ color: timeFontColor }}>
               {`${clock}`}
             </div>
-            <div>
+            <div style={{ color: weekDayFontColor }}>
               {format(dateFromNow, 'PPPP', { locale: i18n.t('locale', { returnObjects: true }) })}
             </div>
           </div>
